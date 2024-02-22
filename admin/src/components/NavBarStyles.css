@@ -1,0 +1,27 @@
+.container {
+    position: relative;
+    display: flex;
+    flex: 1;
+    margin-left: 10px;
+}
+.container h1 {
+    color: #000;
+}
+.container ul {
+    display: flex;
+    flex: 1;
+    list-style-type: none;
+
+}
+li {
+    display: flex;
+    margin: 10px;
+    font-size: 28px;
+}
+a {
+    text-decoration: none;
+    transition: background 1s;
+}
+a:hover {
+    color: red;
+}

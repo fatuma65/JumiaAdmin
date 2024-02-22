@@ -1,0 +1,37 @@
+.product-form {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.product-form label {
+    font-size: 23px;
+}
+.product-form input {
+    padding: 10px;
+}
+.product-form textarea {
+    margin-left: 10px;
+    width: 40%;
+    font-size: 20px;
+}
+.product-form button {
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    background-color: blueviolet;
+    font-size: 22px;
+    margin: 10px;
+    margin-top: 60px;
+    transition: background 1s;
+}
+button:hover {
+    background-color: rgb(139, 118, 158);
+}
+.product-form select {
+    display: flex;
+    position: absolute;
+    margin-top: 40px;
+    width: 500px;
+    padding: 10px;
+    font-size: 20px;
+    
+
+}

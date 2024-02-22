@@ -1,0 +1,55 @@
+.product h1 {
+    text-align: center;
+}
+.product-details {
+    border: 10px solid #fff;
+    border-radius: 15px;
+    background: #fff;
+    width: 400px;
+    height: 600px;
+    text-align: center;
+    flex: 1 0 200px;
+    box-shadow: 0 0 20px 10px rgba(0,0,0,0.1);
+    margin-left: auto;
+    margin-right: auto;
+}
+.product {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    gap: 40px;
+}
+.title {
+    font-size: 24px;
+}
+.description {
+    font-size: 24px;
+}
+.price {
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+}
+.image {
+    width: 300px;
+    min-height: 300px;
+
+}
+.buttons {
+    padding: 10px;
+    margin: 10px;
+    /* position: absolute; */
+    /* left: 50%; */
+}
+.buy {
+    margin: 10px;
+    float: left;
+    margin-left: 20vh;
+    margin-top: -10vh;
+}
+.see {
+    margin: 10px;
+    margin-right: 20vh;
+    float: right;
+    margin-top: -10vh;
+
+}
