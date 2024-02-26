@@ -1,16 +1,17 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBar from "../components/NavBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavBar2 from "../components/Navbar2"
 import HomePage from "../components/HomePage";
-// import {ProductList} from "../components/ProductList";
+
 
 const Home = () => {
+
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
+      <NavBar2 />
       <HomePage />
       {/* <ProductList /> */}
-      
     </div>
   );
 };

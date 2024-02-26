@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form .button {
+  text-align: center !important;
+  padding: 10px;
+  font-size: 18px;
+}

@@ -2,7 +2,7 @@ import {configureStore} from '@reduxjs/toolkit'
 import {mainReducer} from './reducers'
 
 const stores = configureStore({
-    reducer: mainReducer
+    reducer: mainReducer,
 })
 
 export default stores

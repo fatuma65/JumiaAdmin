@@ -6,12 +6,14 @@ import Cart from './routes/Cart'
 import Categories from './routes/categories'
 import DetailsProducts from './routes/productDetails'
 import Login from './routes/login'
-import {AuthProvider} from './components/AuthContext'
+// import {AuthProvider} from './components/AuthContext'
 import ProductListPage from './routes/productListPage'
+
 function App() {
+
   return (
     <>
-     <AuthProvider>
+     {/* <AuthProvider> */}
       <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/category' element={<Categories />}></Route>
@@ -23,7 +25,8 @@ function App() {
       
           <Route path='/login' element={<Login />}></Route>
       </Routes>
-      </AuthProvider>
+      {/* <ColorSchemesExample /> */}
+      {/* </AuthProvider> */}
 
     </>
   )

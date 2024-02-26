@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { ProductDetails } from "./ProductDetails";
 import "./ProductListStyles.css";
-import { addToCart } from "../features/cartSlice";
+// import { addToCart } from "../redux/features/cartReducer"
 import { useDispatch } from "react-redux";
 export const ProductList = () => {
   // const { addToCart } = useAuth();

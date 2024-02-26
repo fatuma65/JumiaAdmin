@@ -6,13 +6,13 @@ import { Card } from "react-bootstrap";
 import {Button} from "react-bootstrap";
 // import {useAuth} from "./AuthContext";
 import { useNavigate } from "react-router-dom";
-import { addToCart, handleProductId } from "../features/cartSlice";
+// import { addToCart, handleProductId } from "../redux/features/cartReducer";
 import { useSelector, useDispatch } from "react-redux";
 
 export const ProductDetails = () => {
   const navigate = useNavigate()
   // const { handleProductId} = useAuth()
-  const UserId = useSelector(state => state.user.UserId)
+  const UserId = useSelector(state => state.admin.UserId)
   const dispatch = useDispatch()
 
   const { id } = useParams();
@@ -25,7 +25,6 @@ export const ProductDetails = () => {
         );
         const data = await response.json();
         setProducts(data);
-        console.log(products);
         console.log(data);
       };
       fetchProductDetails();

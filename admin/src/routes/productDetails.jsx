@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import NavBar2 from "../components/Navbar2";
 import {ProductDetails} from "../components/ProductDetails";
 
 const DetailsProducts = () => {
@@ -9,7 +9,7 @@ const DetailsProducts = () => {
   // }
   return (
     <div>
-      <NavBar />
+      <NavBar2 />
       <ProductDetails />
     </div>
   );
