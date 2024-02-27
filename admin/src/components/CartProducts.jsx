@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
-// import { useAuth } from "./AuthContext";
 import { useDispatch, useSelector } from "react-redux";
-// import { addToCart, removeFromCart } from "../redux/features/cartReducer";
 import "./CartStyles.css";
 const CartProducts = () => {
-  // const {  addToCart, cartItems, productId, quantity, getCartTotal, clearCart, removeFromCart } = useAuth();
-  const UserId = useSelector((state) => state.user.UserId);
+  const UserId = useSelector((state) => state.admin.UserId);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const quantity = useSelector((state) => state.cart.quantity);
   const productId = useSelector((state) => state.cart.productId);
@@ -30,9 +27,7 @@ const CartProducts = () => {
       console.log("an error has occured adding the cart", error);
     }
   };
-  // const addingProduct = () => {
-  //   dispatch(add)
-  // }
+
   useEffect(() => {
     addProductToCart();
   }, [cartItems]);
@@ -88,7 +83,9 @@ const CartProducts = () => {
                     <i
                       onClick={() => handleRemoveCart(item)}
                       className="bi bi-caret-down"
-                    >-</i>
+                    >
+                      -
+                    </i>
                     <td>${item.price}</td>
 
                     <td>${item.price * item.quantity}</td>

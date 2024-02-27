@@ -1,19 +1,16 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { useAuth } from "./AuthContext";
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { ProductDetails } from "./ProductDetails";
 import "./ProductListStyles.css";
-// import { addToCart } from "../redux/features/cartReducer"
-import { useDispatch } from "react-redux";
 export const ProductList = () => {
-  // const { addToCart } = useAuth();
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setLoading(true);
@@ -50,10 +47,10 @@ export const ProductList = () => {
     console.log(id);
     navigate(`/product/details/${id}`);
   };
-  
-  const handleAddToCart  = (items) => {
-    dispatch(addToCart(items))
-  }
+
+  const handleAddToCart = (items) => {
+    dispatch(addToCart(items));
+  };
   return (
     <div className="container-fluid ">
       <h1 className="h4">Products</h1>
@@ -72,14 +69,13 @@ export const ProductList = () => {
                 src={`http://localhost:4000/uploads/${items.image}`}
                 alt={items.title}
                 className=" img-fluid mx-auto d-block"
-                // product-image
               />
               {items.category && (
                 <p className="product-category">
                   Category:{items.category.title}
                 </p>
               )}
-              <div >
+              <div>
                 <button className="btn btn-primary">Buy Now</button>
                 <button
                   className="btn btn-primary"
@@ -94,45 +90,5 @@ export const ProductList = () => {
         })}
       </ul>
     </div>
-    // <div className="product-card">
-    //   <h1>Products</h1>
-    //   <ul className="product-ul">
-    //     {product.map((items) => {
-    //       return (
-    //         <div
-    //           key={items.id}
-    //           className="product-list"
-    //           onClick={() => handleClick(items.id)}
-    //         >
-    //           <p className="product-title">{items.title}</p>
-    //           <p className="product-description">{items.description}</p>
-    //           <p className="product-price">${items.price}</p>
-    //           <img
-    //             src={`http://localhost:4000/uploads/${items.image}`}
-    //             alt={items.title}
-    //             className=" img-fluid mx-auto d-block"
-    //             // product-image
-    //           />
-    //           {items.category && (
-    //             <p className="product-category">
-    //               Category:{items.category.title}
-    //             </p>
-    //           )}
-    //           <div className="product-buttons">
-    //             <button className="product-buy">Buy Now</button>
-    //             <button
-    //               className="product-see"
-    //               onClick={() => addToCart(items)}
-    //             >
-    //               Add to Cart
-    //             </button>
-    //           </div>
-    //           {selectedProduct && <ProductDetails id={selectedProduct} />}
-    //         </div>
-    //       );
-    //     })}
-    //   </ul>
-    // </div>
   );
 };
-

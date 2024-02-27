@@ -1,10 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { useAuth } from "./AuthContext";
-import { useDispatch, useSelector } from "react-redux";
 import loginAdmin, {
-  // getloginData,
   handleLogin,
   isloading,
 } from "../redux/actions/adminActions";
@@ -14,12 +12,8 @@ const LoginAdmin = () => {
     username: "",
     password: "",
   });
-  // let loginInfo = useSelector((state) => state.adminReducer);
-  const isLoggedIn = useSelector((state) => state.admin.isLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const { handleLogin } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,47 +29,14 @@ const LoginAdmin = () => {
     if (!result) {
       console.log("results not found");
     }
-    // dispatch(getloginData(result))
-    // console.log(dispatch(getloginData(result)))
 
     const UserId = result.UserId;
-    console.log('this is the user id',UserId);
-    // const admin = {
-    //   UserId: UserId,
-    //   // isLoggedIn: true
-    // }
-    // console.log(admin)
+    console.log("this is the user id", UserId);
+
     dispatch(handleLogin(UserId));
 
     navigate(`/`);
   };
-
-  // if (!isloading) {
-  //   return (
-  //     <button className="btn btn-primary">
-  //       <span className="spinner-border spinner-border-sm"></span>
-  //       Loading..
-  //     </button>
-  //   );
-  // }
-
-  // const handleRemember = () => {
-  //    const remembered = !loginData.remember
-  //   setLogin({...loginData, remember:remembered });
-  //   if (remembered) {
-  //     // save the users credentials to local storage
-  //     localStorage.setItem('username', loginData.username)
-  //     localStorage.setItem('password', loginData.password)
-  //     console.log('you are now remembered')
-  //   }
-  //   else {
-  //     // we remove the users credentials from local storage
-  //     console.log('you are no longer remembered')
-  //     localStorage.removeItem('username')
-  //     localStorage.removeItem('password')
-  //     console.log('you are no longer remembered')
-  //   }
-  // }
 
   return (
     <div>
@@ -103,12 +64,7 @@ const LoginAdmin = () => {
           autoComplete="on"
         />
         <label className="form-check-label">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            name="remember"
-            // onClick={handleRemember}
-          />
+          <input className="form-check-input" type="checkbox" name="remember" />
           Remember me
         </label>
         <input

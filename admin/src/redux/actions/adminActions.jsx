@@ -1,22 +1,15 @@
 // Action creators
 import { adminCart } from "./types";
 
-
 export const handleLogin = (UserId) => ({
   type: adminCart.HANDLE_LOGIN,
-  payload: UserId
-  // isLoggedIn: true
+  payload: UserId,
 });
 
 export const handleLogout = () => ({
   type: adminCart.HANDLE_LOGOUT,
-  // isLoggedIn: false
 });
 
-// export const getloginData = (payload) => ({
-//   type: adminCart.LOGIN_DATA,
-//   payload,
-// });
 
 export const isloading = (loading) => ({
   type: adminCart.LOADING,
@@ -24,8 +17,6 @@ export const isloading = (loading) => ({
 });
 
 const loginAdmin = async (payload) => {
-  //   const dispatch = useDispatch();
-
   try {
     const response = await fetch("http://localhost:4000/users/login/user", {
       method: "POST",

@@ -1,13 +1,14 @@
 import { cartTypes } from "./types";
 
-export const addToCart = (cartItems, quantity) => ({
+export const addToCart = (cartItems) => ({
   type: cartTypes.ADD_TO_CART,
-  cartItems,
-  quantity,
+  payload: cartItems,
+  // payload: quantity,
 });
 
 export const clearCart = () => ({
   type: cartTypes.CLEAR_CART,
+  
 });
 
 export const removeCart = () => ({
@@ -16,5 +17,5 @@ export const removeCart = () => ({
 
 export const handleProductId = (productId) => ({
   type: cartTypes.HANDLE_PRODUCT_ID,
-  productId,
+  payload: productId,
 });
