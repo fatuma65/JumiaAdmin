@@ -25,3 +25,7 @@ a {
 a:hover {
     color: red;
 }
+
+.mb-3 {
+    font-size: 24px;
+}

@@ -123,7 +123,7 @@ const ProductForm = () => {
             ))}
           </select>
         </label>
-        <button type="button" class="btn btn-dark">
+        <button type="button" className="btn btn-dark">
           Add Product
         </button>
       </form>

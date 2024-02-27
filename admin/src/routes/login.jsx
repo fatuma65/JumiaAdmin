@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import LoginAdmin from '../components/LoginUser'
-import NavBar from '../components/NavBar'
+import NavBar2 from "../components/Navbar2"
 
 const Login = () => {
   
   return (
     <div>
-        <NavBar />
+        <NavBar2 />
         <LoginAdmin />
     </div>
   )

@@ -1,15 +1,14 @@
-.container h2{
-    text-align: center;
-    font-size: 22px;
+.container h2 {
+  text-align: center;
+  font-size: 22px;
 }
 .container {
-    display: flex;
-    /* flex-wrap: wrap; */
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-.container  p {
-    font-size: 24px;
+.container p {
+  font-size: 24px;
 }
 .col-md-4 .price {
-    color: red;
+  color: red;
 }

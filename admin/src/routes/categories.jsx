@@ -1,11 +1,11 @@
 import React from "react";
 import CategoryForm from "../components/CategoryForm";
-import NavBar from "../components/NavBar";
+import NavBar2 from "../components/Navbar2";
 
 const Categories = () => {
   return (
     <div>
-      <NavBar />
+      <NavBar2 />
       <CategoryForm />
     </div>
   );

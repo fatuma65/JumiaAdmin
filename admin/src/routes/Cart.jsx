@@ -1,11 +1,11 @@
 import React from "react";
 import CartProducts from "../components/CartProducts";
-import NavBar from "../components/NavBar";
+import NavBar2 from "../components/Navbar2";
 
 const Cart = () => {
   return (
     <div>
-      <NavBar />
+      <NavBar2 />
       <CartProducts />
     </div>
   );

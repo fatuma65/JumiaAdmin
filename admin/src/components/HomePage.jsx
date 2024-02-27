@@ -1,7 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
-import banners from '../assets/image1.png'
-import './HeaderStyles.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import banners from '../assets/image1.png';
+import './HeaderStyles.css';
 
 const HomePage = () => {
   return (
