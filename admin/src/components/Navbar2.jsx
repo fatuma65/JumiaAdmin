@@ -22,7 +22,7 @@ function NavBar2() {
   return (
     <>
       {["sm"].map((expand) => (
-        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
+        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-2">
           <Container fluid>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -31,10 +31,13 @@ function NavBar2() {
               placement="end"
             >
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3 ">
+                <Nav className="justify-content-end flex-grow-1 pe-2 ">
                   <Nav.Link as={Link} to="/">
                     Home
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/category">
+                        Category
+                      </Nav.Link>
                   {isLoggedIn ? (
                     <>
                       <Nav.Link as={Link} to="/products">
@@ -60,6 +63,9 @@ function NavBar2() {
                     <>
                       <Nav.Link as={Link} to="/login" onClick={handleLogin}>
                         Login
+                      </Nav.Link>
+                      <Nav.Link as={Link} to="/register" >
+                        Register
                       </Nav.Link>
                     </>
                   )}

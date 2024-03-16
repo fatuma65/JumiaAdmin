@@ -1,9 +1,9 @@
 // Action creators
 import { adminCart } from "./types";
 
-export const handleLogin = (UserId) => ({
+export const handleLogin = (adminId) => ({
   type: adminCart.HANDLE_LOGIN,
-  payload: UserId,
+  payload: adminId,
 });
 
 export const handleLogout = () => ({
@@ -16,15 +16,15 @@ export const isloading = (loading) => ({
   loading,
 });
 
-const loginAdmin = async (payload) => {
+export const loginAdmin = async (payload) => {
   try {
-    const response = await fetch("http://localhost:4000/users/login/user", {
+    const response = await fetch("http://localhost:4000/admin/login/admin", {
       method: "POST",
       body: JSON.stringify(payload),
       headers: { "Content-Type": "application/json" },
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     if (data) {
       localStorage.setItem("username", data.username);
@@ -37,4 +37,4 @@ const loginAdmin = async (payload) => {
     console.log("an error has occured", error);
   }
 };
-export default loginAdmin;
+

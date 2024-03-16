@@ -5,7 +5,6 @@ export const cartTypes = {
   INCREASE_QUANTITY: "cart/INCREASE_QUANTITY",
   CLEAR_CART: "cart/CLEAR_CART",
   HANDLE_PRODUCT_ID: "cart/HANDLE_PRODUCT_ID",
-
 };
 export const adminCart = {
   HANDLE_LOGIN: "HANDLE_LOGIN",

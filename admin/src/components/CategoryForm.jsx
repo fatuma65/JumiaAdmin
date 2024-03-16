@@ -1,24 +1,43 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import "./Category.css";
 
 const CategoryForm = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-  });
+ const [formData, setFormData] = useState({
+  title: '',
+  subCategoryId: 0,
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+ })
+  const [subcategory, setSubCategory] = useState([])
+  const [loading, setLoading] = useState(false)
 
+  useEffect(() => {
+    // fetching sub categories
+    const fetchCategories = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          "http://localhost:4000/category/get/subcategory"
+        );
+        const data = await response.json();
+        console.log(data);
+        setSubCategory(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCategories();
+  }, []);
+ 
   const addCategory = async () => {
     try {
+    //  creating nested sub categories from sub categories
       const response = await fetch(
-        "http://localhost:4000/category/create/category",
+        "http://localhost:4000/category/create/nestedsubcategory",
         {
           method: "POST",
-          body: JSON.stringify(formData),
+          body: JSON.stringify(formData ),
           headers: { "Content-Type": "application/json" },
         }
       );
@@ -31,38 +50,56 @@ const CategoryForm = () => {
         console.log("Adding failed");
       }
     } catch (error) {
-      console.log("An error has occured", error);
+      console.log("An error has occured adding category", error);
     }
+  
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     addCategory();
-    setFormData({ title: "", description: "" });
   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  if (loading) {
+    return <h4>Loading....</h4>
+  }
 
   return (
     <>
-      <h2>Add Category</h2>
+      
       <form onSubmit={handleSubmit} className="form-survey">
+      <h2>Add Nested sub Category</h2>
         <label htmlFor="title">Title</label>
         <input
           type="text"
           id="title"
           name="title"
-          value={formData.title}
+          defaultValue={formData.title}
+          placeholder="add the nested category"
           onChange={handleChange}
           required
         />
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          id="description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-        />
-        <button>Add Category</button>
+          <label>
+          Sub Category</label>
+          <select
+            name="subCategoryId"
+            onChange={handleChange}
+            value={formData.subCategoryId}
+            className="form-select form-select-sm"
+          >
+            <option value="">Select sub Category</option>
+            {subcategory.map((category) => (
+              <option key={category.id} value={category.id} className="option1">
+                {category.name}
+              </option>
+            ))}
+          </select>
+        
+        <button onClick={handleSubmit} className="btn btn-dark">
+         add nested category
+        </button>
       </form>
     </>
   );

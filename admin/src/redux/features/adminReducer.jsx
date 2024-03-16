@@ -1,7 +1,7 @@
 import { adminCart } from "../actions/types";
 
 const initialState = {
-  UserId: null,
+  adminId: null,
   isLoggedIn: false,
   loading: false,
 };
@@ -19,15 +19,15 @@ export const adminReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        UserId: action.payload,
+        adminId: action.payload,
         isLoggedIn: true,
       };
 
     case adminCart.HANDLE_LOGOUT:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
-        UserId: null,
+        adminId: null,
         isLoggedIn: false,
       };
     default:

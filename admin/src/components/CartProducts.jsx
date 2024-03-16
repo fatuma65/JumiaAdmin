@@ -1,18 +1,34 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeCart, increaseQuantity } from "../redux/actions/cartActions";
 import "./CartStyles.css";
 const CartProducts = () => {
-  const UserId = useSelector((state) => state.admin.UserId);
+  const adminId = useSelector((state) => state.admin.adminId);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const quantity = useSelector((state) => state.cart.quantity);
   const productId = useSelector((state) => state.cart.productId);
+
   const dispatch = useDispatch();
+
+  // const handleAddCart = (item) => {
+  //  dispatch(addToCart(item));
+  //  };
+
+   const handleRemoveCart = (itemId) => {
+     dispatch(removeCart(itemId));
+     console.log("product is removed from cart");
+   };
+
+  //  const handleQuantity = (item) => {
+  //   dispatch(increaseQuantity(item));
+  //  }
+ 
   const addProductToCart = async () => {
     try {
       const response = await fetch("http://localhost:4000/cart/create/cart", {
         method: "POST",
         body: JSON.stringify({
-          UserId,
+          adminId,
           cartItems,
           productId,
           quantity,
@@ -22,23 +38,17 @@ const CartProducts = () => {
       const data = await response.json();
       console.log(data);
 
-      console.log("product added successfully", data);
-    } catch (error) {
+      console.log("product added successfully");
+    } 
+    catch (error) {
       console.log("an error has occured adding the cart", error);
     }
-  };
-
+}
   useEffect(() => {
     addProductToCart();
   }, [cartItems]);
 
-  const handleAddCart = (items) => {
-    dispatch(addToCart(items));
-  };
-  const handleRemoveCart = (items) => {
-    dispatch(removeFromCart(items));
-    console.log("product is removed from cart");
-  };
+  console.log(cartItems)
 
   if (!cartItems) {
     return <div>Cart not found</div>;
@@ -76,21 +86,21 @@ const CartProducts = () => {
                       />
                     </td>
                     <i
-                      onClick={() => handleAddCart(item)}
+                      onClick={() => dispatch(increaseQuantity(item))}
                       className="bi bi-caret-down"
-                    ></i>
+                    >+</i>
                     <i className="mx-2">{item.quantity}</i>
                     <i
-                      onClick={() => handleRemoveCart(item)}
+                      onClick={() => handleRemoveCart(item.id)}
                       className="bi bi-caret-down"
                     >
-                      -
+                      remove
                     </i>
                     <td>${item.price}</td>
 
                     <td>${item.price * item.quantity}</td>
                     <i
-                      onClick={() => handleRemoveCart(item)}
+                      onClick={() => handleRemoveCart(item.id)}
                       className="bi bi-caret-x text-danger"
                     >
                       remove

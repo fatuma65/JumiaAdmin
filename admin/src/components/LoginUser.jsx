@@ -2,8 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import loginAdmin, {
+import  {
   handleLogin,
+  loginAdmin,
   isloading,
 } from "../redux/actions/adminActions";
 import "./LoginUserStyles.css";
@@ -30,10 +31,10 @@ const LoginAdmin = () => {
       console.log("results not found");
     }
 
-    const UserId = result.UserId;
-    console.log("this is the user id", UserId);
+    const adminId = result.adminId;
+    console.log("this is the user id", adminId);
 
-    dispatch(handleLogin(UserId));
+    dispatch(handleLogin(adminId));
 
     navigate(`/`);
   };

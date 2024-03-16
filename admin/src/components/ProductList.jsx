@@ -48,8 +48,8 @@ export const ProductList = () => {
     navigate(`/product/details/${id}`);
   };
 
-  const handleAddToCart = (items) => {
-    dispatch(addToCart(items));
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
   };
   return (
     <div className="container-fluid ">
@@ -59,16 +59,17 @@ export const ProductList = () => {
           return (
             <div
               key={items.id}
-              className="col-md-4 col-md-3 "
+              className="col-4 "
+              // className="col-md-4 col-md-3 "
               onClick={() => handleClick(items.id)}
-            >
+              >
               <p className="product-title">{items.title}</p>
               <p className="product-description">{items.description}</p>
               <p className="product-price">${items.price}</p>
               <img
                 src={`http://localhost:4000/uploads/${items.image}`}
                 alt={items.title}
-                className=" img-fluid mx-auto d-block"
+                className=" img-fluid product-image"
               />
               {items.category && (
                 <p className="product-category">

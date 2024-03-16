@@ -21,23 +21,23 @@
 }
 
 .product-title {
-  font-size: 24px;
+  font-size: 18px;
 }
 .product-description {
-  font-size: 24px;
+  font-size: 16px;
 }
 .product-price {
-  font-size: 24px;
+  font-size: 15px;
   color: red;
   font-weight: bold;
 }
 .product-image {
-  width: 230px;
-  min-height: 300px;
+  width: 200px;
+  min-height: 80px;
 }
 
 .product-category {
-  font-size: 20px;
+  font-size: 16px;
 }
 .product-card .product-buttons {
   margin-top: -10px;
