@@ -8,7 +8,7 @@ const ProductForm = () => {
     description: "",
     price: "",
     image: null,
-    categoryId: 0,
+    nestedId: 0,
   });
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,11 +18,11 @@ const ProductForm = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:4000/category/get/category"
+          "http://localhost:4000/category/get/nestedsubcategory"
         );
         const data = await response.json();
         console.log(data);
-        setCategories(data.categories);
+        setCategories(data);
       } catch (error) {
         console.log(error);
       } finally {
@@ -36,7 +36,6 @@ const ProductForm = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const fileChange = (e) => {
     console.log(e.target.files);
     setFormData({ ...formData, image: e.target.files[0] });
@@ -49,7 +48,7 @@ const ProductForm = () => {
     formDataToSend.append("title", formData.title);
     formDataToSend.append("description", formData.description);
     formDataToSend.append("price", formData.price);
-    formDataToSend.append("categoryId", formData.categoryId);
+    formDataToSend.append("nestedId", formData.nestedId);
 
     const response = await fetch(
       "http://localhost:4000/products/create/product",
@@ -64,8 +63,10 @@ const ProductForm = () => {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
+      // setFormData(data)
+      console.log('product added successfully')
     } else {
-      console.log("An error has occured");
+      console.log("An error has occured adding the product");
     }
   };
 
@@ -75,7 +76,7 @@ const ProductForm = () => {
   return (
     <div>
       <form
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
         className="product-form"
         encType="multipart/form-data"
       >
@@ -110,9 +111,9 @@ const ProductForm = () => {
         <label>
           Category
           <select
-            name="categoryId"
+            name="nestedId"
             onChange={handleChange}
-            value={formData.categoryId}
+            value={formData.nestedId}
             className="form-select form-select-lg"
           >
             <option value="">Select Category</option>
@@ -123,7 +124,7 @@ const ProductForm = () => {
             ))}
           </select>
         </label>
-        <button type="button" className="btn btn-dark">
+        <button type="button" className="btn btn-dark" onClick={handleSubmit}>
           Add Product
         </button>
       </form>

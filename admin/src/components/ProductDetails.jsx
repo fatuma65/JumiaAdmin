@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { handleProductId } from "../redux/actions/cartActions";
+import { addToCart, handleProductId } from "../redux/actions/cartActions";
 import "./ProductDetailsStyles.css";
 export const ProductDetails = () => {
   const navigate = useNavigate();
-  const UserId = useSelector((state) => state.admin.UserId);
+  const adminId = useSelector((state) => state.admin.adminId);
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -35,11 +35,12 @@ export const ProductDetails = () => {
   const handleAddToCart = () => {
     try {
       let productId = products.id;
+      console.log(dispatch(addToCart(products)))
       dispatch(handleProductId(productId));
       console.log("product added to cart");
-      console.log(`adding product ${productId} to cart for user ${UserId}`);
+      console.log(`adding product ${productId} to cart for user ${adminId}`);
 
-      navigate(`/cart/${UserId}`);
+      navigate(`/cart/${adminId}`);
     } catch (error) {
       console.log("an error has occured adding product to cart", error);
     }
@@ -57,7 +58,7 @@ export const ProductDetails = () => {
           {products.description}
         </Card.Text>
         <Card.Subtitle style={{ color: "red" }}>
-          ${products.price}
+          UGX {products.price}
         </Card.Subtitle>
         <Card.Img
           src={`http://localhost:4000/uploads/${products.image}`}
